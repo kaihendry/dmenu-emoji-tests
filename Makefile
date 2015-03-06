@@ -69,4 +69,10 @@ uninstall:
 	@rm -f ${DESTDIR}${MANPREFIX}/man1/dmenu.1
 	@rm -f ${DESTDIR}${MANPREFIX}/man1/stest.1
 
-.PHONY: all options clean dist install uninstall
+font: dmenu
+	@echo "Assuming your Font directory list at /etc/fonts/fonts.conf includes <dir>~/.fonts</dir>"
+	mkdir -p ~/.fonts/
+	cp fonts/NotoColorEmoji.ttf ~/.fonts/
+	fc-list | grep -i emoji
+
+.PHONY: all options clean dist install uninstall font
